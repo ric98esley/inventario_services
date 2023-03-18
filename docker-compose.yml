@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.6.4-focal
+    volumes:
+    - ./db:/var/lib/mysql
+    env_file:
+    - .env.docker
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - .env.docker
+    ports:
+      - "8080:80"
+
+
