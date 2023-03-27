@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  mariadb:
-    image: mariadb:10.6.4-focal
+  db_postgres:
+    image: postgres:15.2-alpine
     volumes:
-    - ./db:/var/lib/mysql
+    - ./db_data:/var/lib/postgresql/data
     env_file:
     - .env.docker
     ports:
-      - "3307:3306"
+      - "5432:5432"
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+  pgadmin:
+    image: dpage/pgadmin4
     env_file:
       - .env.docker
     ports:
